@@ -33,8 +33,8 @@ This project **demonstrates** hybrid propulsion, energy efficiency, and real-tim
 ## 🚀 **Setup & Execution**
 ### **1️⃣ Clone the Project**
 ```bash
-git clone https://github.com/dmarnet/skyclear-system.git
-cd skyclear-system
+git clone https://github.com/dmarnet/SkyClear.git
+cd skyclear-dashboard
 ```
 
 ### **2️⃣ Configure Firebase**
