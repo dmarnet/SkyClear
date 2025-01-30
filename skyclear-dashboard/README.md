@@ -1,4 +1,5 @@
-# **SkyClear System – Hybrid Aircraft Engine Control with Solar Energy**
+# **SkyClear System – Hybrid Aircraft Engine Control with Solar Energy**  
+🌐 **Live Dashboard:** [SkyClear Dashboard](https://skyclear-925d0.web.app/)  
 
 ## 📌 About the Project  
 The **SkyClear System** is a **hybrid control system** for aircraft engines, integrating:  
@@ -17,7 +18,7 @@ This project **demonstrates** hybrid propulsion, energy efficiency, and real-tim
 🔹 **Arduino Uno** (sensors, LEDs, buttons, PID logic)  
 🔹 **Node.js Server** (USB Serial communication, Firebase sync)  
 🔹 **Firebase Realtime Database** (cloud data storage)  
-🔹 **React Web Interface** (dashboard with system status & controls)  
+🔹 **React Web Interface** ([Live Dashboard](https://skyclear-925d0.web.app/))  
 
 ---
 
@@ -34,7 +35,7 @@ This project **demonstrates** hybrid propulsion, energy efficiency, and real-tim
 ### **1️⃣ Clone the Project**
 ```bash
 git clone https://github.com/dmarnet/SkyClear.git
-cd skyclear-dashboard
+cd SkyClear
 ```
 
 ### **2️⃣ Configure Firebase**
@@ -68,7 +69,8 @@ node server.js
 cd frontend
 npm start
 ```
-- Open **[http://localhost:3000](http://localhost:3000)**  
+- Open **[http://localhost:3000](http://localhost:3000)** or access the **live version:**  
+  👉 [SkyClear Dashboard](https://skyclear-925d0.web.app/)  
 
 ---
 
