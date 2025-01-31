@@ -257,7 +257,7 @@ void loop() {
     }
 
     // 4.3 Consumo de combustível
-    if (motorCombustaoAtivo && combustivelAtual > 0) {
+    if (potenciaCombustao > 0 && combustivelAtual > 0) {
       float combustivelGasto = (consumoPorSegundo * (potenciaCombustao / 100.0) * deltaTime) 
                                + combustivelCargaBateria;
       combustivelAtual -= combustivelGasto;
@@ -265,7 +265,7 @@ void loop() {
     }
 
     // 4.4 Consumo de bateria
-    if (motorEletricoAtivo && bateriaAtual > 0) {
+    if (potenciaEletrico > 0 && bateriaAtual > 0) {
       float bateriaGasta = consumoEletrico * (potenciaEletrico / 100.0) * deltaTime;
       bateriaAtual -= bateriaGasta;
       if (bateriaAtual < 0) bateriaAtual = 0;
@@ -301,9 +301,9 @@ void loop() {
       if (combustivelAtual <= 0) {
         // sem combustível => força elétrico
         potenciaCombustao = 0;
-        potenciaEletrico  = (bateriaAtual > 0) ? 100 : 0;
+        potenciaEletrico  = (bateriaAtual > 0) ? 100 : 0;       
       } 
-      else if (bateriaAtual <= 0) {
+      else if (bateriaAtual <= 5) {
         // sem bateria => força combustão
         potenciaCombustao = 100;
         potenciaEletrico  = 0;
@@ -313,6 +313,9 @@ void loop() {
         potenciaEletrico  = (int)co2Output;
         potenciaCombustao = 100 - potenciaEletrico;
       }
+      // Se a potência for maior que 0, motor deve estar ligado
+      //motorCombustaoAtivo = (potenciaCombustao > 0);
+      //motorEletricoAtivo  = (potenciaEletrico  > 0);
     }
     else {
       // 4.8 MODO MANUAL
@@ -320,12 +323,12 @@ void loop() {
 
       // ============== Recarrega se acabar o recurso ==============
       // 1) Combustível acabou e motorCombustaoAtivo == true
-      if (motorCombustaoAtivo && combustivelAtual <= 0) {
+      if (!controlePID && motorCombustaoAtivo && combustivelAtual <= 0) {
         combustivelAtual = 100.0;
         Serial.println("{\"info\":\"Fuel refilled automatically.\"}");
       }
       // 2) Bateria acabou (~<= 1) e motorEletricoAtivo == true
-      if (motorEletricoAtivo && bateriaAtual <= 0) {
+      if (!controlePID && motorEletricoAtivo && bateriaAtual <= 0) {
         bateriaAtual = 100.0;
         Serial.println("{\"info\":\"Battery recharged automatically.\"}");
       }
