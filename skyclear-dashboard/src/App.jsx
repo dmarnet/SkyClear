@@ -6,7 +6,7 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
-import fundoSkyClear from "./assets/fundo2SkyClear.png";
+import fundoSkyClear from "./assets/fundoSkyClear.png";
 
 import DocModal from "./components/DocModal";
 import CardSkyClear from "./components/CardSkyClear";
@@ -104,7 +104,7 @@ function App() {
 
   return (
     <div
-      className="container-fluid text-center text-white px-5 py-2"
+      className="container-fluid text-center text-white p-3"
       style={{
         backgroundImage: `url(${fundoSkyClear})`,
         backgroundAttachment: "fixed",
@@ -115,14 +115,34 @@ function App() {
       }}
     >
       {/* Título principal */}
-      <h1
-        className="p-3 hover-primary"
-        style={{ cursor: "pointer" }}
-        onClick={toggleDoc}
-        title="About SkyClear System"
-      >
-        SkyClear System
-      </h1>
+      <div className="row align-items-center">
+        {/* Coluna vazia */}
+        <div className="col"></div>
+
+        {/* Título centralizado */}
+        <div className="col text-center">
+          <h1
+            className="p-3 hover-primary"
+            style={{ cursor: "pointer", color: "white" }}
+            onClick={toggleDoc}
+            title="About SkyClear System"
+          >
+            SkyClear System
+          </h1>
+        </div>
+
+        {/* Botão alinhado à direita */}
+        <div className="col text-end">
+          <button
+            type="button"
+            className="btn btn-link"
+            onClick={toggleDoc}
+            title="Tutorial"
+          >
+            <i className="bi bi-question-circle" style={{ fontSize: "1.5rem" }}></i>
+          </button>
+        </div>
+      </div>
       <DocModal show={showDoc} onClose={toggleDoc} />
 
       <div className="container-fluid mt-4">
@@ -130,10 +150,10 @@ function App() {
         <h2 className="mb-1">System Status</h2>
 
         {/* Linha principal com duas colunas */}
-        <div className="row justify-content-between align-items-start border rounded p-3">
+        <div className="row justify-content-between align-items-start border rounded p-1">
           
           {/* Coluna 1 (esquerda) - Botões de Controle */}
-          <div className="col-3">
+          <div className="col-4">
             <h4 className="mb-4">Control Buttons</h4>
 
             {/* 1) Combustion */}
@@ -167,7 +187,7 @@ function App() {
                   width: "50px",
                   height: "50px"
                 }}
-                title="Electric Motor control button"
+                title="Electric motor control button"
                 onClick={() => toggleButton("eletrico")}
               >
                 <i className="bi bi-lightning fs-3 text-center"></i>
@@ -195,7 +215,7 @@ function App() {
           </div>
           
           {/* Coluna 2 (direita) */}
-          <div className="col-9 align-items-center">
+          <div className="col-8 align-items-center">
             {/* Primeira linha: System LEDs */}
             <div className="row mb-4">
               <div className="col-12">
@@ -274,8 +294,7 @@ function App() {
         {/* CARDS SECTION */}
         <h2 className="mb-1">Dashboard</h2>
 
-        {/* Linha principal com duas colunas */}
-        <div className="row justify-content-between align-items-start border rounded p-3">
+        <div className="row justify-content-between align-items-start border rounded p-1">
           {/* Combustion */}
           <div className="col-md-4">
             <h4 className="mt-4 mb-1">Combustion</h4>
@@ -416,8 +435,7 @@ function App() {
         {/* CHARTS SECTION */}
         <h2 className="mb-1">Charts</h2>
 
-        {/* Linha principal com duas colunas */}
-        <div className="row justify-content-between align-items-start border rounded p-3">
+        <div className="row justify-content-between align-items-start border rounded p-1">
           {/* Combustion */}
           <div className="col-md-4">
             <h4 className="mt-4 mb-1">Combustion</h4>
@@ -426,12 +444,14 @@ function App() {
               label="Power Combustion Load"
               data={arduinoData}
               unit="%"
+              bgColor="red"
             />
             <ChartSkyClear
               chartKey="fuel"
               label="Fuel Level"
               data={arduinoData}
               unit="%"
+              bgColor="red"
             />
           </div>
 
@@ -443,18 +463,21 @@ function App() {
               label="Power Electric Load"
               data={arduinoData}
               unit="%"
+              bgColor="blue"
             />
             <ChartSkyClear
               chartKey="batteryLevel"
               label="Battery Level"
               data={arduinoData}
               unit="%"
+              bgColor="blue"
             />
             <ChartSkyClear
               chartKey="solarCharge"
               label="Solar Charge"
               data={arduinoData}
               unit="%"
+              bgColor="orange"
             />
           </div>
 
@@ -466,36 +489,43 @@ function App() {
               label="Current CO2 Saved by Electric Motor"
               data={arduinoData}
               unit="u."
+              bgColor="green"
+
             />
             <ChartSkyClear
               chartKey="CO2NotEmittedTotalElectric"
               label="Total CO2 Saved by Electric Motor"
               data={arduinoData}
               unit="u."
+              bgColor="green"
             />
             <ChartSkyClear
               chartKey="CO2NotEmittedCurrentSolar"
               label="Current CO2 Saved by Solar Energy"
               data={arduinoData}
               unit="u."
+              bgColor="green"
             />
             <ChartSkyClear
               chartKey="CO2NotEmittedTotalSolar"
               label="Total CO2 Saved by Solar Energy"
               data={arduinoData}
               unit="u."
+              bgColor="green"
             />
             <ChartSkyClear
               chartKey="currentCO2"
               label="Current CO2 Emission"
               data={arduinoData}
               unit="u."
+              bgColor="black"
             />
             <ChartSkyClear
               chartKey="totalCO2"
               label="Total CO2 Emission"
               data={arduinoData}
               unit="u."
+              bgColor="black"
             />
           </div>
         </div>

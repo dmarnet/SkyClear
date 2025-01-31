@@ -30,7 +30,7 @@ function ChartSkyClear({
             {
               label: unit ? `${label} (${unit})` : label,
               data: [],
-              borderColor: "#007bff",
+              borderColor: bgColor,
               backgroundColor: "rgba(0, 123, 255, 0.1)",
               borderWidth: 2,
               fill: true,
@@ -50,7 +50,7 @@ function ChartSkyClear({
         },
       });
     }
-  }, [label, unit]);
+  }, [label, unit, bgColor]);
 
   // Sempre que data mudar, inserimos novo ponto
   useEffect(() => {
@@ -73,7 +73,7 @@ function ChartSkyClear({
   }, [data, chartKey]);
 
   return (
-    <div className={`card p-3 mx-3 mb-5 border-1 ${bgColor} ${textColor}`} style={{ height: "270px" }}>
+    <div className={`card p-3 mx-2 mb-4 border-1 ${bgColor} ${textColor}`} style={{ height: "270px" }}>
       <h6>{unit ? `${label} (${unit})` : label}</h6>
       <canvas
         ref={canvasRef}

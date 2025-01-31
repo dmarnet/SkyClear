@@ -31,7 +31,7 @@ const docContent = {
     projectInfoTitle: "Project Info",
     nameLabel: "Name",
     versionLabel: "Version",
-    dateLabel: "Date",
+    dateLabel: "Date", 
     lastReleaseLabel: "Last Release",
     authorLabel: "Author",
     contactTitle: "Author Contact",
@@ -104,7 +104,7 @@ const docContent = {
     projectInfoTitle: "Informações do Projeto",
     nameLabel: "Nome",
     versionLabel: "Versão",
-    dateLabel: "Data",
+    dateLabel: "Data", // Não será exibido
     lastReleaseLabel: "Última Release",
     authorLabel: "Autor",
     contactTitle: "Contato do Autor",
@@ -233,13 +233,31 @@ function DocModal({ show, onClose }) {
               <strong>{t.versionLabel}:</strong> 1.0
             </li>
             <li>
-              <strong>{t.dateLabel}:</strong> 01/29/2025
-            </li>
-            <li>
               <strong>{t.lastReleaseLabel}:</strong> 01/29/2025
             </li>
             <li>
-              <strong>{t.authorLabel}:</strong> Daniel Elbachá Marnet
+              <strong>{t.authorLabel}:</strong> Daniel Marnet
+            </li>
+            {/* New lines for repo and site */}
+            <li>
+              <strong>GitHub Repo:</strong>{" "}
+              <a
+                href="https://github.com/dmarnet/SkyClear"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                github.com/dmarnet/SkyClear
+              </a>
+            </li>
+            <li>
+              <strong>Web Page:</strong>{" "}
+              <a
+                href="https://skyclear-925d0.web.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                skyclear-925d0.web.app
+              </a>
             </li>
           </ul>
         </section>

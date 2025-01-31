@@ -39,34 +39,34 @@ cd SkyClear
 ```
 
 ### **2️⃣ Configure Firebase**
-1. **Create a Firebase Project** ([console](https://console.firebase.google.com/))  
+1. **Create a Firebase Project**
 2. **Enable Realtime Database** (`.read: true, .write: true` in rules)  
-3. **Download Service Account Key** → Save as `server/serviceAccountKey.json`  
+3. **Download Service Account Key**
 
 ### **3️⃣ Install Dependencies**
 ```bash
 # Backend (Node.js)
-cd server
+cd arduino-firebase-gateway
 npm install
 
 # Frontend (React)
-cd ../frontend
+cd skyclear-dashboard
 npm install
 ```
 
 ### **4️⃣ Upload Firmware to Arduino**
-- Open `firmware/skyclear.ino` in **Arduino IDE**  
+- Open `SkyClear.ino` in **Arduino IDE**  
 - Select **Board: Arduino Uno** → Upload  
 
 ### **5️⃣ Start Backend (Node.js)**
 ```bash
-cd server
+cd arduino-firebase-gateway
 node server.js
 ```
 
 ### **6️⃣ Start Frontend (React)**
 ```bash
-cd frontend
+cd skyclear-dashboard
 npm start
 ```
 - Open **[http://localhost:3000](http://localhost:3000)** or access the **live version:**  
@@ -75,15 +75,16 @@ npm start
 ---
 
 ## 📖 **How to Use the Web Dashboard**
-- 🛑 **Combustion On/Off** → Toggle combustion engine  
+- 🔥 **Combustion On/Off** → Toggle combustion engine  
 - ⚡ **Electric On/Off** → Toggle electric motor  
 - 🎛 **PID On/Off** → Switch between **manual & automatic**  
-- 🔴 🟢 **LEDs** → Show engine/system status  
-- 🚨 **Alerts** → Warns about **low fuel/battery**  
+- 🔴🔵🟡🟢 **LEDs** → Show engine/system status  
+- 🚨 **Messages/Alerts** → Warns  
 
 ---
 
 ## 👨‍💻 **Author & Contact**
+### Daniel Marnet  
 📧 Email: [delmarnet1@gmail.com](mailto:delmarnet1@gmail.com)  
 🔗 LinkedIn: [linkedin.com/in/danielmarnet](https://linkedin.com/in/danielmarnet)  
 💻 GitHub: [github.com/dmarnet](https://github.com/dmarnet)  
