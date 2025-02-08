@@ -303,7 +303,7 @@ void loop() {
         potenciaCombustao = 0;
         potenciaEletrico  = (bateriaAtual > 0) ? 100 : 0;       
       } 
-      else if (bateriaAtual <= 5) {
+      else if (bateriaAtual <= 0) {
         // sem bateria => força combustão
         potenciaCombustao = 100;
         potenciaEletrico  = 0;
@@ -316,6 +316,18 @@ void loop() {
       // Se a potência for maior que 0, motor deve estar ligado
       //motorCombustaoAtivo = (potenciaCombustao > 0);
       //motorEletricoAtivo  = (potenciaEletrico  > 0);
+      
+      // ============== Recarrega se acabar o recurso ==============
+      // 1) Combustível acabou e motorCombustaoAtivo == true
+      if (combustivelAtual <= 0) {
+        combustivelAtual = 100.0;
+        Serial.println("{\"info\":\"Fuel refilled automatically.\"}");
+      }
+      // 2) Bateria acabou (~<= 1) e motorEletricoAtivo == true
+      if (bateriaAtual <= 0) {
+        bateriaAtual = 100.0;
+        Serial.println("{\"info\":\"Battery recharged automatically.\"}");
+      }
     }
     else {
       // 4.8 MODO MANUAL
@@ -323,12 +335,12 @@ void loop() {
 
       // ============== Recarrega se acabar o recurso ==============
       // 1) Combustível acabou e motorCombustaoAtivo == true
-      if (!controlePID && motorCombustaoAtivo && combustivelAtual <= 0) {
+      if (combustivelAtual <= 0) {
         combustivelAtual = 100.0;
         Serial.println("{\"info\":\"Fuel refilled automatically.\"}");
       }
       // 2) Bateria acabou (~<= 1) e motorEletricoAtivo == true
-      if (!controlePID && motorEletricoAtivo && bateriaAtual <= 0) {
+      if (bateriaAtual <= 0) {
         bateriaAtual = 100.0;
         Serial.println("{\"info\":\"Battery recharged automatically.\"}");
       }
